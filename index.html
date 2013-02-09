@@ -1,0 +1,86 @@
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <!--
+      This is a simple website you can go to when your coworker leaves his desk
+      without locking his screen. This prank is, IMHO, funnier (and less harmful)
+      than posting silly messages on his wall or event sending emails!
+
+      Brought to you by Sébastien Saunier - http://saunier.me
+    -->
+    <title>Lock your screen!</title>
+    <style type="text/css">
+      body {
+        font-family: "Helvetica Neue", Helvetica, sans-serif;
+        background-color: black;
+        color: white;
+        padding: 1em;
+      }
+      h1 { font-size: 2em; margin: 2em 0; }
+      #main { text-align: center; }
+      img { border: 4px #444 solid; max-width: 80%; }
+      #footer {
+        position: fixed;
+        left: 50%;
+        bottom: 12px;
+        color: #444;
+        margin-left: -150px;
+        width: 300px;
+        text-align: center;
+        font-size: 11px;
+      }
+      #footer a { color: #666; text-decoration: none; }
+      #footer a:hover { text-decoration: underline; color: #FAFAD2; }
+      #footer span { display: none; }
+    </style>
+    <meta name="google-site-verification" content="sujQ2hhQFXtGn-iIOKJuJafyOe_l9yw26Jg_qvb94fA" />
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+  </head>
+  <body>
+    <div id="main">
+      <h1>Baby polar bear is disappointed that you didn't lock your screen.</h1>
+      <img src="/sad-polar-bear.jpg" alt="Sad baby polar bear" />
+    </div>
+    <div id="footer">
+      <a href="#" id="revealDetails">About</a>
+      <span>
+        Kindly brought to you by <a href="http://about.me/ssaunier" id="cb">Sébastien Saunier</a> :)
+      </span>
+    </div>
+
+    <script type="text/javascript">
+      window.onload = function() {
+        var about = document.getElementById('revealDetails');
+        about.addEventListener('click', revealDetails);
+        var cb = document.getElementById('cb');
+        cb.addEventListener('click', clickCb);
+      }
+
+      function revealDetails(e) {
+        e.preventDefault(); // Don't move to top
+        _gaq.push(['_trackEvent', 'Link', 'Click', 'About']);
+        this.parentNode.children[1].style.display = 'block';
+        this.style.display = 'none';
+      }
+
+      function clickCb(e) {
+        e.preventDefault();  // Don't navigate yet, wait for tracking first
+        var url = this.href;
+        _gaq.push(['_trackEvent', 'Link', 'Click', 'Cb']);
+        setTimeout(function() {
+          document.location.href = url;
+        }, 200);
+      }
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-17777460-1']);
+      _gaq.push(['_setDomainName', '.lockyourscreen.com']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+  </body>
+</html>
