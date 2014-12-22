@@ -17,7 +17,7 @@
         color: white;
         padding: 1em;
       }
-      h1 { font-size: 2em; margin: 2em 0; }
+      h1 { font-size: 2em; margin: 2em auto; width: 20em; }
       #main { text-align: center; display: none; }
       #lys-img { max-width: 600px; max-height: 400px; }
       img { border: 4px #111 solid; max-width: 80%; }
@@ -40,7 +40,7 @@
   </head>
   <body>
     <div id="main">
-      <h1><span id="who">Baby Polar Bear</span> is disappointed that you didn't lock your screen.</h1>
+      <h1 id="caption">Baby Polar Bear is disappointed that you didn't lock your screen.</h1>
       <a href="http://sebastien.saunier.me">
         <img src="img/sad-polar-bear.jpg" alt="Baby Polar Bear" id="lys-img" />
       </a>
@@ -57,12 +57,13 @@
     <script type="text/javascript">
       var PICTURES = [
         { src: 'img/sad-polar-bear.jpg', alt: "Baby Polar Bear"},
-        { src: 'img/mister-t.jpg', alt: "Mister T" },
+        { src: 'img/mister-t.jpg', alt: "Mister T", fullcaption: "Lock your screen, fool." },
         { src: 'img/grumpy-cat.jpg', alt: "Grumpy Cat" },
         { src: 'img/obama.jpg', alt: "Obama" },
         { src: 'img/charlize-theron.jpg', alt: "Charlize Theron" },
         { src: 'img/lisa-simpson.jpg', alt: "Lisa Simpson" },
-        { src: 'img/the-captain.jpg', alt: 'The Captain' }
+        { src: 'img/the-captain.jpg', alt: 'The Captain' },
+        { src: 'img/lumbergh.jpg', alt: 'Lumbergh', fullcaption: "Yeah, if you could go ahead and lock your screen next time, that'd be great." }
       ];
 
       window.onload = function() {
@@ -94,7 +95,9 @@
         var img = document.getElementById('lys-img');
         img.src = picture.src;
         img.alt = picture.alt;
-        document.getElementById('who').innerHTML = picture.alt;
+        var caption = picture.fullcaption;
+        if (!caption) caption = picture.alt + " is disappointed that you didn't lock your screen.";
+        document.getElementById('caption').innerHTML = caption;
         document.getElementById('main').style.display = 'block';
       }
 
