@@ -14,6 +14,6 @@ Enjoy!
 
 1. Fork this repo
 1. Add a picture to the `img` folder
-1. Add a new element to the [`PICTURES`](https://github.com/ssaunier/lockyourscreen/blob/gh-pages/index.html#L58-L65) javascript array
+1. Add a new element to the [`PICTURES`](https://github.com/ssaunier/lockyourscreen/blob/gh-pages/index.html#L58-L73) javascript array
 1. Submit a Pull Request back to this repo!
 1. I (@ssaunier) will ll review it quickly ;)
