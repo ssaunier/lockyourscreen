@@ -17,7 +17,7 @@
         color: white;
         padding: 1em;
       }
-      h1 { font-size: 2em; margin: 2em auto; width: 20em; }
+      h1 { font-size: 2em; margin: 2em auto; width: 20em; text-align: center; }
       #main { text-align: center; display: none; }
       #lys-img { max-width: 600px; max-height: 400px; }
       img { border: 4px #111 solid; max-width: 80%; }
@@ -44,6 +44,10 @@
       <a href="http://sebastien.saunier.me">
         <img src="img/sad-polar-bear.jpg" alt="Baby Polar Bear" id="lys-img" />
       </a>
+    </div>
+    <div>
+      <h1 id="timer">
+      </h1>
     </div>
     <div id="footer">
       <a href="#" id="revealDetails">About</a>
@@ -86,6 +90,10 @@
         var cb = document.getElementById('cb');
         cb.addEventListener('click', clickCb);
         loadRandomPicture();
+        var start = Date.now();
+        setInterval(function() {
+          document.getElementById('timer').innerHTML = 'It has been ' + Math.floor((Date.now() - start) / 1000) + ' seconds since you\'ve been pwned.'
+        }, 1000);
       }
 
       function revealDetails(e) {
