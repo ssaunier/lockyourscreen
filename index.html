@@ -124,7 +124,17 @@
       }
 
       function loadRandomPicture() {
-        var picture = PICTURES[Math.floor(Math.random()*PICTURES.length)];
+        var queryParams = new URLSearchParams(document.location.search);
+        var forcedPictureFromQuery = PICTURES.find(function (element) {
+          return element.src.includes("img/" + queryParams.get("img") + ".")
+        });
+
+        if (forcedPictureFromQuery !== undefined) {
+          var picture = forcedPictureFromQuery;
+        } else {
+          var picture = PICTURES[Math.floor(Math.random()*PICTURES.length)];
+        }
+
         var img = document.getElementById('lys-img');
         img.src = picture.src;
         img.alt = picture.alt;
